@@ -7,11 +7,15 @@
 
 <body>
 
+<div id="box"></div>
+
 <script>
+
 document.addEventListener("DOMContentLoaded", function(){
 	console.log("testing");
 	
 	if( navigator.geolocation ){ 
+	
   		console.log("geolocation supported");
 		var params = {enableHighAccuracy: true, timeout:360000, maximumAge:0};
 		navigator.geolocation.getCurrentPosition( watchPosition, gpsError, params ); 
@@ -21,7 +25,21 @@ document.addEventListener("DOMContentLoaded", function(){
   			console.log( position.coords.longitude );
   			console.log( position.coords.accuracy );
   			console.log( position.coords.altitude );
-		}
+			
+			var x = document.getElementById("box");
+			var canvas = document.createElement("canvas");
+			canvas.width = "400";
+			canvas.height = "400";
+			canvas.border = "2px solid red";
+			x.appendChild(canvas);
+			var lat = position.coords.latitude;
+			var lon = position.coords.longitude;
+			console.log(lat);
+			console.log(lon);
+			var img = document.createElement("img");
+			img.src = "https://maps.googleapis.com/maps/api/staticmap?&size=400x400&markers=color:red%7C" + lat + "," + lon;
+			x.appendChild(img);
+			}
 		
 		function gpsError( error ){   
   			var errors = {
@@ -32,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
   			alert("Error: " + errors[error.code]);
 		}
 		
-		var canvas = document.createElement("canvas");
+		
 	}
 	else{
 		alert("Your browser doesn't support geolocation function.");
