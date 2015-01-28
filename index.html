@@ -12,34 +12,32 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
-	console.log("testing");
-	
+
+	//check if geolocation is supported
 	if( navigator.geolocation ){ 
 	
-  		console.log("geolocation supported");
 		var params = {enableHighAccuracy: true, timeout:360000, maximumAge:0};
 		navigator.geolocation.getCurrentPosition( watchPosition, gpsError, params ); 
 		
 		function watchPosition( position ){ 
-  			console.log( position.coords.latitude );
-  			console.log( position.coords.longitude );
-  			console.log( position.coords.accuracy );
-  			console.log( position.coords.altitude );
-			
+			//create canvas element and append into div
 			var x = document.getElementById("box");
 			var canvas = document.createElement("canvas");
-			canvas.width = "400";
-			canvas.height = "400";
-			canvas.border = "2px solid red";
+			canvas.width = "500";
+			canvas.height = "500";
+			canvas.style.border = "2px dashed teal";
+			var context = canvas.getContext("2d");
 			x.appendChild(canvas);
+			
+			//get location parameters and display map img in canvas
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
-			console.log(lat);
-			console.log(lon);
 			var img = document.createElement("img");
 			img.src = "https://maps.googleapis.com/maps/api/staticmap?&size=400x400&markers=color:red%7C" + lat + "," + lon;
-			x.appendChild(img);
-			}
+			img.onload = function() {
+    			context.drawImage(img, 50, 50);
+  			};
+		}
 		
 		function gpsError( error ){   
   			var errors = {
@@ -49,15 +47,10 @@ document.addEventListener("DOMContentLoaded", function(){
   			};
   			alert("Error: " + errors[error.code]);
 		}
-		
-		
 	}
 	else{
 		alert("Your browser doesn't support geolocation function.");
 	}
-	
-	
-	
 });
 
 
