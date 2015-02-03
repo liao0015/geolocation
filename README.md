@@ -17,4 +17,4 @@
 5. The google static map includes a marker at the center of the map, and     
  The map image is loaded at zoom level 14.  
  The map image size is 400px by 400px.   
- [Google map API]:https://developers.google.com/maps/documentation/staticmaps (Links to an external site)
+ This is the link to [Google map API](https://developers.google.com/maps/documentation/staticmaps "Links to an external site") 
