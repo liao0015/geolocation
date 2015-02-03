@@ -1,11 +1,12 @@
 #**_Geolocation_**
 
-###Author: **BO LIAO**        Date:_Jan 30th, 2015_
+###Author: **BO LIAO**          
+ Date:_Jan 30th, 2015_
 
 ##Description
-1. The webpage was built to check to see if the user's current browser supports the navigator.geolocation object;        
+*The webpage was built to check to see if the user's current browser supports the navigator.geolocation object;        
  If the browser does not support geolocation then the page displays an feedback message to the user.
-2. If geolocation is supported then the user's current location is fetched in as **a static google map**.
+*If geolocation is supported then the user's current location is fetched in as **a static google map**.
 
 
 ##Instructions
